@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Navbar = () => {
+const Navbar = ({setSearch, setPageSize}) => {
     const handleSearch = (event)=> {
-        console.log(event.target.previousSibling.value);
+        setPageSize(0);
+        setSearch(`search?query=${event.target.previousSibling.value}`);
     }
     
     return (
-        <nav className="navbar bg-primary">
+        <nav className="navbar sticky-top bg-primary">
             <div className="container-fluid">
                 <Link to="/" className="navbar-brand text-white fw-bold">HackerNews Search</Link>
                 <div className="d-flex justify-content-center mx-auto w-50" role="search">
