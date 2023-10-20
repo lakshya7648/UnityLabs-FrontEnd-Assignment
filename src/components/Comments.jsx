@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {v4 as uid} from 'uuid';
 
 const Comments = ({ children, mleft }) => {
-    const parentId = uid();
     if(children.length == 0) {
         return;
     }

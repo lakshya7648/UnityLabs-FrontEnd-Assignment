@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Cards = ({ title, objectId, points, num_comments, dateCreated, dateUpdated, tags }) => {
-    // console.log("tags = ", tags);
+    
     return (
         <div className="card mb-3 w-100" >
             <div className="row g-0">

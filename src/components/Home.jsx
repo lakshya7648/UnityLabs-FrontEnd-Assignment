@@ -19,24 +19,21 @@ const Home = () => {
     // creating the fetch news function
     let url = `http://hn.algolia.com/api/v1/${search}`;
     const fetchNews = async () => {
-        console.log("calling, ", pageSize);
         let response, result;
         try {
             response = await fetch(url);
             result = await response.json();
         } catch (error) {
             setAlertType("danger");
-            setAlertMessage(error.message);
+            setAlertMessage("Some error occured");
             setAlertVisible(true);
         }
         setNews(result);
         setHits(result.hits);
-        console.log(result);
-        console.log(hits);
         setLoading(false);
     }
+    //creating the function for fetching more data on scrolling to the last
     const fetchData = async () => {
-        console.log("fetchData called", pageSize);
         url = url.endsWith("search") ? url + `?page=${pageSize + 1}` : url + `&page=${pageSize + 1}`;
         setPageSize(pageSize + 1);
         const response = await fetch(url);
@@ -48,7 +45,6 @@ const Home = () => {
         setHits((obj) => {
             return [...obj, ...results.hits];
         })
-        console.log(hits);
     }
     useEffect(() => {
         fetchNews();
