@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Spinner from './Spinner';
+import Comments from './Comments';
 
 const ItemsView = () => {
     const { objectId } = useParams();
@@ -17,6 +18,7 @@ const ItemsView = () => {
         }
         setDetails(result);
         setLoading(false);
+        console.log(result);
     }
 
 
@@ -31,6 +33,8 @@ const ItemsView = () => {
         <span className="fs-4 d-block">Author : {details.author}</span>
         <h4 className="fw-semibold d-block">Points : {details.points}</h4>
         <a className="btn btn-primary my-3" href={details.url} target="_blank">Read Here</a>
+        <h4>Comments</h4>
+        <Comments children={details.children} mleft={0}/>
         </div>}
     </div>
   )
